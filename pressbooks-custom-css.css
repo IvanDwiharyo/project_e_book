@@ -1,0 +1,1507 @@
+@charset "UTF-8";
+/*
+Theme Name: Morrison EPUB
+Theme URI: http://pressbooks.com/
+Description: Named for Toni Morrison, this theme is best for books of literary fiction, memoir, personal non-fiction, poetry and romance.
+Version: 1.0.1
+Author: PressBooks (Book Oven Inc.)
+Author URI: http://pressbooks.com
+Copyright 2011-2013 Book Oven Inc. (PressBooks.com) support@pressbooks.com
+*/
+
+/* PRESSBOOKS EPUB FALL-BACK STYLESHEET FOR VARIOUS SPECIAL THINGS 
+in development
+copyright 2013-2014 Book Oven Inc. */
+
+/* HEADERS */
+
+h1, h2, h3, h4, h5, h6 {
+	hyphens: none;
+	-webkit-hyphens: none;
+}
+
+h1.front-matter-title,
+h1.part-title,
+h2.chapter-title,
+h1.back-matter-title {
+	hyphens: none;
+	-webkit-hyphens: none;
+}
+
+/* DISPLAY NONE 
+IN VARIOUS CIRCUMSTANCES 
+========================= */
+
+.display-none {
+	display: none;
+}
+
+/* this ONLY works/is declared in EPUB, ignored in MOBI & PDF */
+
+.epub-display-none {
+    display:none; 
+}
+.web-only {
+  display: none;
+}
+.pdf-only {
+  display: none;
+}
+
+/* This is used in the PDF to generate a short chapter title for running headers 
+in the case that the chapter title is too long. It's spurious in the EPUB, should always be
+display: none; */
+
+h6.short-title {
+  display: none;
+}
+
+.part.invisible {
+	display: none;
+}
+
+div.chapter.numberless h3.chapter-number {
+	display: none;
+}
+
+/* Blank page ... this is to add a blank page in PDF ... can;'t think of a case it is wanted in EPUB.
+hrm.  */
+
+div.blank-page {
+  display:none;
+}
+
+/* SECTION BREAKS */
+
+div.ugc > h3.section-break {
+  text-align: center;
+  text-indent: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+div.ugc > h3.section-break-space {
+   visibility: hidden;
+   text-align: center;
+   text-indent: 0;
+   margin-top: 0;
+   margin-bottom: 0;
+}
+
+div.ugc > h3.section-break-page {
+  text-align: center;
+  text-indent: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  page-break-after: always;
+}
+
+/* PAGE-BREAKS */
+.page-break-after {
+  page-break-after: always;
+}
+
+.page-break-before {
+  page-break-before: always;
+}
+
+div.ugc > p.no-indent, 
+p.no-indent {
+  margin-top: 1em !important;
+  text-indent: 0 !important;
+}
+
+sup,
+sup.footnote {
+  font-size: 0.8em;
+  line-height: 1;
+}
+/* FONTS */
+@font-face {
+  font-family: "WWDesigns";
+  font-weight: normal;
+  font-style: normal;
+  src: url(../Fonts/WWDesigns.ttf) format("truetype");
+}
+
+/* SASS COLORS */
+/* GENERAL DEFAULT STYLES
+=========================== */
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: "Baskerville", "Palatino", "Georgia", serif;
+  line-height: 1.4em;
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* HEADERS */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Baskerville", "Palatino", "Georgia", serif;
+  line-height: 1.1em;
+  font-weight: normal;
+  text-align: center;
+}
+
+div.ugc h1, div.ugc h2, div.ugc h3, div.ugc h4, div.ugc h5, div.ugc h6 {
+  font-family: "Baskerville", "Palatino", "Georgia", serif;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  text-align: center;
+}
+
+div.ugc h1 {
+  font-size: 1em;
+  font-weight: bold;
+  font-style: italic;
+}
+
+div.ugc h2 {
+  font-size: 1em;
+  font-style: italic;
+}
+
+div.ugc h3 {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+div.ugc h4 {
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+div.ugc h5 {
+  font-size: 0.9em;
+  font-style: italic;
+  font-weight: normal;
+}
+
+div.ugc h6 {
+  font-size: 0.8em;
+}
+
+div.ugc h1 + p,
+div.ugc h2 + p,
+div.ugc h3 + p,
+div.ugc h4 + p,
+div.ugc h5 + p {
+  margin-top: 0;
+  text-indent: 0;
+}
+
+/*  PARAGRAPHS & BODY TEXT 
+ ========================== */
+p {
+  font-family: "Baskerville", "Palatino", "Georgia", serif;
+  line-height: 1.4em;
+  margin: 0;
+  text-indent: 1.5em;
+}
+
+p + p {
+  text-indent: 1.5em;
+  margin-top: 0;
+}
+
+div.ugc p.indent {
+  line-height: 1.4em;
+  margin: 0;
+  text-align: left;
+  text-indent: 1.5em;
+}
+
+div.ugc p.nonindent,
+p.nonindent,
+.nonindent {
+  line-height: 1.4em;
+  margin: 0;
+  text-align: left;
+  text-indent: 0;
+}
+
+p.no-indent,
+.no-indent {
+  line-height: 1.4em;
+  text-align: left;
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+div.front-matter p.no-indent,
+.no-indent {
+  line-height: 1.4em;
+  text-align: left;
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+div.back-matter p.no-indent,
+.no-indent {
+  line-height: 1.4em;
+  text-align: left;
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+p.hanging-indent,
+.hanging-indent {
+  line-height: 1.4em;
+  text-align: left;
+  text-indent: 0;
+  margin: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+/* TABLES */
+table {
+  font-size: 0.8em;
+  display: block;
+  margin: 25px 0;
+  page-break-inside: avoid;
+}
+
+table caption {
+  text-align: left;
+}
+
+table caption span {
+  font-style: italic;
+}
+
+thead th {
+  font-weight: lighter;
+}
+
+thead th span {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+table span {
+  font-weight: bold;
+}
+
+td {
+  border-bottom: 1px dotted #000;
+  padding: 5px;
+}
+
+/* DEFINITION LISTS */
+dt {
+  font-weight: lighter;
+  font-size: 0.9em;
+  color: #0197B2;
+  text-transform: uppercase;
+  margin: 20px 0;
+}
+
+dd {
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 0.85em;
+  margin: 20px 0;
+}
+
+dt, dd {
+  display: inline;
+  margin: 0;
+}
+
+dd:after {
+  content: "A";
+  white-space: pre;
+}
+
+/* ORDERED AND UNORDERED LISTS */
+ul {
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+ol {
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+div.ucg p + ul {
+  margin-top: 1em;
+}
+
+div.ucg p + ol {
+  margin-top: 1em;
+}
+
+/* BLOCKQUOTES */
+.blockquote,
+blockquote {
+  font-size: 1em;
+  font-style: italic;
+  margin: 5%;
+}
+
+.bq_2,
+blockquote.bq_2 {
+  font-size: 1.2em;
+  font-style: italic;
+  text-align: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+  margin: 5%;
+}
+
+.bq_2 p,
+blockquote.bq_2 p {
+  text-align: left;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+p.bl_nonindent {
+  margin: 0 1em 0;
+  text-indent: 0;
+}
+
+p.bl_indent {
+  margin: 0 1em 0;
+  text-indent: 1.5em;
+}
+
+/* SEPARATORS */
+hr {
+  margin: 10px auto;
+  text-align: center;
+  width: 20%;
+}
+
+hr.break-symbols,
+hr.break-symbol {
+  border: none;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+hr.break-symbols::after,
+hr.break-symbol::after {
+  display: block;
+  content: "\066D";
+  text-align: center;
+}
+
+h3.section-break {
+  text-align: center;
+  text-indent: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+h3.section-break-page {
+  text-align: center;
+  text-indent: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  page-break-after: always;
+}
+
+div.ugc.chapter-ugc > h3.section-break-symbol {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* SPECIAL */
+cite {
+  font-weight: normal;
+}
+
+span.uppercase_decoration {
+  color: #0197B2;
+  text-transform: uppercase;
+}
+
+/* TITLE PAGE
+================ */
+#title-page {
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+#title-page h1.title {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-size: 2em;
+  margin-top: 2em;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  margin-bottom: 1em;
+  padding-bottom: 5px;
+  text-align: center;
+  hyphens: none;
+}
+
+#title-page h2.subtitle {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-style: normal;
+  font-size: 1em;
+  text-transform: uppercase;
+  margin-top: 0;
+  padding-top: 5px;
+  color: #7f7f7f;
+}
+
+#title-page h3.author {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-weight: normal;
+  hyphens: none;
+}
+
+#title-page > div.pb-publogo-wrap {
+  padding-top: 30px;
+  text-align: center;
+}
+
+img.pb-publogo {
+  width: 10%;
+  height: auto;
+  margin-left: 45%;
+  margin-right: auto;
+  margin-bottom: 0;
+  display: block;
+  float: none;
+}
+
+img.pb-publogo-wide {
+  width: 20%;
+  height: auto;
+  margin-left: 40%;
+  margin-right: auto;
+  margin-bottom: 0;
+  display: block;
+}
+
+#title-page > h4.publisher {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  margin-top: 2em;
+  text-align: center;
+  hyphens: none;
+}
+
+#title-page > h5.publisher-city {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-size: 0.9em;
+  margin-top: 0.5em;
+  text-align: center;
+  margin-top: 0;
+  hyphens: none;
+}
+
+/* FRONT-MATTER STYLING 
+======================= */
+/* COPYRIGHT */
+#copyright-page {
+  margin: 10%;
+}
+
+#copyright-page p {
+  font-size: 0.875em;
+  text-indent: 0;
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+
+/* DEDICATION */
+div.dedication {
+  margin-top: 5em;
+  margin-right: 10%;
+  margin-left: 10%;
+  font-style: italic;
+  text-align: center;
+  text-indent: 0;
+}
+
+div.dedication p {
+  font-style: italic;
+  text-align: center;
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+/* EPIGRAPH */
+div.epigraph {
+  margin-top: 5em;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+/* TABLE OF CONTENTS
+======================= */
+#toc {
+  font-family: "Baskerville", "Palatino", "Georgia", serif;
+}
+
+#toc h1 {
+  text-transform: lowercase;
+}
+
+#toc ul {
+  line-height: 1.3em;
+  text-align: center;
+}
+
+#toc ul, #toc li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#toc li {
+  margin-bottom: 5px;
+}
+
+#toc ul .front-matter,
+#toc ul .back-matter {
+  margin-bottom: 3px;
+  font-style: italic;
+}
+
+#toc .front-matter {
+  font-style: italic;
+}
+
+#toc .front-matter .introduction {
+  font-style: normal;
+}
+
+#toc li.introduction span.toc-chapter-title {
+  font-style: normal;
+}
+
+#toc .back-matter {
+  font-style: italic;
+}
+
+#toc .front-matter + .chapter,
+#toc .chapter + .back-matter {
+  margin-top: 1.3em;
+}
+
+#toc a {
+  border: none;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+}
+
+#toc a:after {
+  font-style: normal;
+  text-decoration: none;
+}
+
+#toc .part {
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  margin: 1.3em 0 0.5em;
+}
+
+#toc li.chapter span.toc-chapter-title {
+  font-size: 0.9em;
+  font-style: normal;
+  text-align: center;
+}
+
+span.chapter-author {
+  display: none;
+}
+
+span.chapter-subtitle {
+  display: none;
+}
+
+/* CHAPTER & PART TITLES:
+TITLES, NUMBERS, SUBTITLE, AUTHOR, APHORISM
+FONT-MATTER & BACKMATTER 
+============================================= */
+/* DISPLAY NONE:
+REMOVES CHAPTER NUMBERING 
+ON FRONT-MATTER + BACK-MATTER TITLES */
+.display-none,
+.front-matter-number,
+.back-matter-number {
+  display: none;
+}
+
+h3.front-matter-number,
+h3.front-matter-number.dedication,
+h3.back-matter-number {
+  display: none;
+}
+
+/* TOC TITLE */
+#toc h1 {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-size: 2em;
+  font-weight: lighter;
+  line-height: 1.2em;
+  margin-top: 0px;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+/* FRONT-MATTER TITLES */
+div.front-matter .front-matter-title-wrap > h1:first-of-type {
+  counter-reset: footnote;
+}
+
+div.front-matter-title-wrap > h1:first-of-type {
+  counter-reset: footnote;
+}
+
+div.front-matter-title-wrap {
+  margin-bottom: 2.5em;
+  margin-top: 3em;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.front-matter-title-wrap h1.front-matter-title {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: lighter;
+  line-height: 1.2em;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+}
+
+div.front-matter > div.ugc h4.short-title:first-of-type {
+  visibility: hidden;
+  /* display:none breaks string-set: */
+  font-size: 0;
+  height: 0;
+}
+
+/* PART TITLE */
+div.part-title-wrap {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+h3.part-number {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  display: block;
+  font-weight: lighter;
+  font-size: 1.5em;
+  color: #7f7f7f;
+  page-break-after: avoid;
+display: none;
+}
+
+div.part-title-wrap h3.part-number::before {
+  content: "Part ";
+}
+
+div.part-title-wrap h1.part-title {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-size: 2em;
+  hyphens: none;
+}
+
+/* CHAPTER TITLES */
+div.chapter-title-wrap {
+  margin-bottom: 2.5em;
+  margin-top: 3em;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.chapter-title-wrap > h3.chapter-number {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-size: 1.5em;
+  color: #7f7f7f;
+  font-weight: normal;
+  font-style: normal;
+  display: block;
+}
+
+div.chapter-title-wrap > h2.chapter-title {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-size: 2em;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+.chapter-title-wrap h2.chapter-title::after {
+  font-family: "WWDesigns", fantasy;
+  text-transform: uppercase;
+  content: "D";
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  margin-top: 0;
+  color: #7f7f7f;
+  margin-left: auto;
+  margin-right: auto;
+  height: auto;
+}
+
+div.chapter > div.ugc > h4.short-title:first-of-type {
+  visibility: hidden;
+  /* display:none breaks string-set: */
+  font-size: 0;
+  height: 0;
+}
+
+/* CHAPTER SUBTITLES, CHAPTER AUTHOR & APHORIMS  */
+div.ugc.chapter-ugc > h2.chapter-subtitle {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-style: italic;
+  font-size: 1em;
+  margin: -1em 0 2em 0;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.ugc.chapter-ugc > h2.chapter-author {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  font-style: normal;
+  padding-top: 0.2em;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.ugc.chapter-ugc > .aphorism {
+  font-size: 0.8em;
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-style: normal;
+  font-weight: 300;
+  margin-left: 25%;
+  margin-right: 10%;
+}
+
+.aphorism cite {
+  display: block;
+}
+
+.aphorism cite::before {
+  content: "–";
+}
+
+/* BACK-MATTER TITLES */
+div.back-matter .back-matter-title-wrap > h1:first-of-type {
+  counter-reset: footnote;
+}
+
+div.back-matter > h1:first-of-type {
+  counter-reset: footnote;
+}
+
+div.back-matter-title-wrap {
+  font-weight: normal;
+  margin-bottom: 2.5em;
+  margin-top: 3em;
+  hyphens: none;
+}
+
+div.back-matter-title-wrap > h1.back-matter-title {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  font-size: 1.5em;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+  hyphens: none;
+  -webkit-hyphens: none;
+}
+
+div.back-matter > div.ugc h4.short-title:first-of-type {
+  visibility: hidden;
+  /* display:none breaks string-set: */
+  font-size: 0;
+  height: 0;
+}
+
+/* SPECIAL STYLING 
+======================= */
+/* ASIDES, PULLQUOTES */
+aside {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  margin: 2em 10%;
+  padding: 10px 0;
+  text-indent: 0;
+}
+
+.pullquote {
+  font-family: "Palatino", "Baskerville", "Gerogia", serif;
+  border: 1px solid #000;
+  border-width: 1px 0;
+  margin: 15px 15px 15px 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 45%;
+  display: block;
+}
+
+.pullquote-left {
+  border-width: 1px 0;
+  float: left;
+  margin: 15px 15px 15px 0;
+  padding: 5px 0;
+  text-align: center;
+  width: 45%;
+}
+
+.pullquote-right {
+  border: 1px solid #000;
+  border-width: 1px 0;
+  float: right;
+  margin: 15px 0 15px 15px;
+  padding: 5px 0;
+  text-align: center;
+  width: 45%;
+  display: block;
+}
+
+/* TEXTBOXES & DARK BACKGROUNDS */
+div.textbox {
+  border: 1px dotted;
+  font-size: 0.95em;
+  margin: 1em;
+  padding: 0.5em;
+}
+
+div.textbox.shaded {
+  background-color: #eee;
+}
+
+.textbox p {
+  margin: 10px;
+  padding: 10px;
+}
+
+div.textbox blockquote,
+div.textbox .blockquote {
+  font-size: 0.9em;
+  font-style: normal;
+  padding: 0 0 0 0.1%;
+}
+
+/* FOOTNOTES  */
+.footnotes {
+  display: block;
+  font-size: 0.8em;
+  margin: 1em 0.5em 2em 2em;
+}
+
+.footnotes-wrap {
+  list-style: none;
+  display: block;
+  margin: 10px 10px 10px 40px;
+}
+
+.footnotes p + p {
+  text-indent: 0;
+  text-align: left;
+}
+
+.footnotes p a {
+  display: block;
+  text-decoration: none;
+}
+
+/* IMAGES 
+================== */
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.alignleft {
+  float: left;
+  margin: 1em 1em 1em 0;
+}
+
+.alignright {
+  float: right;
+  margin: 1em 0 1em 1em;
+}
+
+.aligncenter {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.aligncenter-test {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: auto;
+}
+
+div.aligncenter {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+img.aligncenter {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+img.alignnone {
+  display: block;
+  margin: 1em auto;
+  text-align: center;
+}
+
+div.wp-caption {
+  height: auto;
+  max-width: 100%;
+  margin: 1em 0;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+div.wp-caption p.wp-caption-text {
+  font-size: 0.875em;
+  font-style: normal;
+  margin-top: 0.5em;
+  text-align: left;
+}
+
+div.wp-caption.aligncenter,
+div.wp-caption.alignleft,
+div.wp-caption.alignright,
+div.wp-caption.alignnone {
+  /* Hack for "centering" problems on Kindle, Calibre, ... */
+  width: auto !important;
+}
+
+img.solo-tall-5-5x8-5 {
+  height: auto;
+  width: 80%;
+  padding: 1%;
+  border: 0.5px solid #7f7f7f;
+  display: inline-block;
+}
+
+img.solo-wide-5-5x8-5 {
+  height: auto;
+  width: 80%;
+  padding: 1%;
+  border: 0.5px solid #7f7f7f;
+  display: inline-block;
+}
+
+div.image-wrapper {
+  margin-top: 10%;
+  padding-top: 10%;
+  page-break-before: always;
+  page-break-after: always;
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+/* BACK-MATTER 
+=================*/
+/* BIBLIOGRAPHY */
+.bibliography p {
+  text-indent: 0;
+  margin-bottom: 1em;
+}
+
+/* INDEX  */
+.index .ugc {
+  text-align: left;
+}
+
+.index .ugc div {
+  margin-bottom: 4em;
+}
+
+.index .ugc p {
+  font-size: 0.9em;
+  padding-left: 14pt;
+  text-indent: -14pt;
+  text-align: left;
+}
+
+.index .ugc p.sub-entry {
+  padding-left: 30px;
+}
+
+/* NOTES */
+.notes p {
+  text-indent: 0;
+  margin-bottom: 1em;
+}
+
+/* DROPCAPS - (NOTE: WRAP FIRST CHAR IN A SPAN) */
+.firstcharacter {
+  float: left;
+  color: #848484;
+  font-size: 5em;
+  margin-top: -2.5px;
+  padding-right: 5px;
+  padding-left: 3px;
+}
+
+
+/* PRESSBOOKS MOBI FALL-BACK STYLESHEET ... OVERRIDES JUST ABOUT EVERYTHING
+copyright 2013-2014 Book Oven Inc. 
+Version:  2.0 
+*/
+
+/* embedded fonts broken = ornament fonts broken, so replace them in KF8 */
+
+@media amzn-kf8 {
+   .chapter-title-wrap h2.chapter-title::before {
+      content: "";
+   }
+
+   .chapter-title-wrap h2.chapter-title::after {
+      content: "";
+   }
+  
+   #title-page h1.title::before {
+         content: "";
+   }
+   
+   #title-page h1.title::after {
+         content: "";
+   }
+}
+
+
+/* MOBI, oh how we love you mobi ... */ 
+
+/* publogo begone in mobi ... styling not working */
+
+@media amzn-mobi { 
+  
+    div.pb-publogo-wrap {
+        display: none;
+    }
+    img.pb-publogo {
+        display: none;
+    }
+    img.pb-publogo-wide {
+        display: none;
+    }
+}
+
+/* toc page styling */
+
+@media amzn-mobi { 
+  
+   #toc {
+      font-style: normal;
+      font-weight: normal;
+      border: 0px;
+      text-align: left;
+   }
+   #toc h1 {
+        font-size: 1em;
+        font-style: normal;
+        font-weight: normal;    
+   }
+   span.chapter-author {
+        display: none;
+   }
+   span.chapter-subtitle {
+      display: none;
+   }
+   span.toc-chapter-title {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.7em;
+       text-align: left;
+   }
+   li.front-matter {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.7em;
+   }
+   li.part {
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: left;
+      margin-top: 1em;
+   }
+   li.chapter {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 0.7em;
+   }
+   li.back-matter {
+      font-weight: bold;
+      font-size: 1.1em;
+      text-align: left;
+      margin-top: 1em;
+   }
+   #toc a {
+      font-style: normal;
+      font-weight: normal;
+   }
+   #toc ul .front-matter,
+   #toc ul .back-matter {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.7em;
+   }
+   #toc .front-matter {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.7em;
+   }
+   #toc .back-matter {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 0.7em;
+   }
+   #toc .part {
+      font-weight: bold;
+      margin-top: 1em;
+   }
+   #toc li {
+       font-style: normal;
+       font-weight: normal;
+       font-size: 0.7em;
+   }
+}
+
+/* this ONLY works/is declared in MOBI, ignored in EPUB & PDF */
+
+@media amzn-mobi { 
+   .mobi-display-none {
+       display:none; 
+    }
+}
+/* standard styling for mobi */
+
+@media amzn-mobi { 
+
+    body {
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+    }
+    p,
+    .ugc p,
+    .chapter-ugc p {
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 1em;
+    }
+
+    .nonindent,
+    .no-indent,
+    p.nonindent,
+    p.no-indent {
+        font-size: 1em;
+        text-indent: 0;
+        margin-top: 0.5em;
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    .indent,
+    p.indent {
+        font-size: 1em;
+        text-indent: 1.5em;
+        margin-top: 0em;
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    .front-matter-ugc p.indent,
+    .front-matter-ugc p.nonindent,
+    .front-matter-ugc p.no-indent {
+        font-size: 1em;
+        font-family: serif;
+        font-style: normal;
+        font-weight: normal;
+    }
+}
+
+/* headers */
+
+@media amzn-mobi { 
+
+    h1 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.4em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    h2 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.3em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }   
+    h3 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.2em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    h4 {
+        font-weight: normal;
+        font-style: normal;
+        font-size: 1.1em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    h5 {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+    h6 {
+        font-weight: normal;
+        font-style: normal;
+        font-size: 0.9em;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        text-align: center;
+    }
+}
+ 
+ /* blockquotes & textboxes */
+ @media amzn-mobi { 
+
+    div.textbox {
+      margin: 5%;
+    }
+
+    p.bl_nonindent {
+        margin-left: 10%;
+        text-indent: 0;
+        font-size: 0.9em;
+        font-weight: normal;
+        font-style: normal;
+    }
+    p.bl_indent {
+        margin-left: 10%;
+        text-indent: 1.5em;
+        font-size: 0.9em;
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    blockquote,
+    .blockquote {
+        margin-left: 10%;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .ugc.chapter-ugc.textbox {
+      border-top: 1px solid black;
+      margin-left: 10%;
+      padding-left: 10%;
+      margin-right: 5%;
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      font-size: 0.9em;
+    }
+
+    .ugc.chapter-ugc.textbox p.nonindent,
+    .ugc.chapter-ugc.textbox p.indent {
+        margin-left: 10%;
+        margin-right: 5%;
+        font-size: 0.9em;
+    }
+
+    ul, ol {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+}
+
+/* title page */ 
+
+@media amzn-mobi { 
+  
+    h1.title {
+        font-size: 2em;
+        margin-top: 2em;
+        font-weight: normal;
+        font-style: normal;
+    }
+    h2.subtitle {
+        font-size: 1em;
+        font-weight: normal;
+        font-style: normal;
+    }
+    h3.author {
+        font-weight: normal;
+        font-style: normal;
+    }
+    h4.publisher {
+        font-weight: normal;
+        font-style: normal;
+    }
+    h5.publisher-city {
+        font-weight: normal;
+        font-style: normal;
+    }
+
+}
+
+/* FRONT-MATTER STYLING 
+======================= */
+
+@media amzn-mobi { 
+  
+  #copyright-page {
+    margin: 10%;
+    font-style: normal;
+    font-family: normal;
+    text-indent: 0;
+  }
+
+  #copyright-page p {
+    font-size: 0.875em;
+    font-style: normal;
+    font-family: normal;
+    text-indent: 0;
+    margin-bottom: 0.5em;
+  }
+
+}
+
+/* chapter titles */
+
+@media amzn-mobi { 
+
+  div.chapter-title-wrap {
+      font-size: 1.5em;
+      margin-top: 0em;
+      margin-bottom: 0em;
+    }
+  
+  h1.front-matter-title {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.4em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h3.part-number {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h1.part-title {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.4em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h3.chapter-number {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h2.chapter-title {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  h2.chapter-subtitle {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center; 
+  }
+  h2.chapter-author {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: center; 
+  }
+  h1.back-matter-title {
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+   }
+ }
+
+ /* Other styling */ 
+
+@media amzn-mobi { 
+  ul {
+    text-align: right !important;
+  }
+  ol {
+    text-align: right !important;
+  }
+  li {
+    text-align: right !important;
+  }
+}
+
+
